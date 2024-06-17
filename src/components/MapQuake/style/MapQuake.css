@@ -1,0 +1,13 @@
+.ContainerMap{
+  position: relative;
+  left: 4%;
+  width: 355px;
+  height: 300px;
+  border: 2px solid  #5DADE2;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 6px;
+}
+
+.InfoPopup{
+  font-size: 10px;
+}

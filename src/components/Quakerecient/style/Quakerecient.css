@@ -1,0 +1,9 @@
+.Recient{
+  position: relative;
+  padding: 10px;
+  width: 400px;
+  top: 7rem;
+  left: 35%;
+  box-sizing: border-box;
+  border: 1px solid black;
+}

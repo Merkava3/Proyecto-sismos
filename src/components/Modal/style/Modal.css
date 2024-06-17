@@ -1,0 +1,79 @@
+/* ModalWrapper */
+.ModalWrapper {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.25);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.ModalWrapper.animate__headShake {
+  animation: headShake 5s ease infinite;
+  animation-duration: 8s;
+  animation-iteration-count: 1;
+}
+
+.ModalWrapper.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ContainerMsg */
+.ContainerMsg { 
+  width: 430px;
+  height: auto;
+  margin: 199px 0px 0px 425px;
+  background: white;
+  padding: 33px;
+  border-radius: 12px;
+  border: 3px solid var(--modal-border-color); /* Use a CSS variable for the border color */
+}
+
+/* ColorContainer */
+.ColorContainer {
+  display: inline-block;
+  border: 1px solid black;
+  width: 400px;
+  height: 100px;
+  background-color: var(--modal-color); /* Use a CSS variable for the background color */
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+/* CloseButton */
+.CloseButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 0.5em;  
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Scale */
+.Scale {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 900;
+}
+
+
+@media screen and (max-width: 1025px){
+ .ContainerMsg{
+    margin: 205px 0px 0px 410px;
+  }
+}
+  /* Puedes agregar más estilos aquí */
+@media screen and (min-width: 1440px){
+  .ContainerMsg{
+    margin:  219px 0px 0px 697px;
+  }
+}
+

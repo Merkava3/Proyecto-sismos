@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
+
+*{
+font-family: 'Poppins', sans-serif;
+}
+body{
+background-image: url('https://img.freepik.com/vector-gratis/mapa-mundo-diseno-vectores-concepto-lineas-conectadas_1017-42675.jpg?w=1060&t=st=1683303279~exp=1683303879~hmac=60493a59e50764a2a5f63d6111c5fdc4c6c9289c129417a34f9028553a03737c');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

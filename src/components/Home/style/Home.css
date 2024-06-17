@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+.WrapperTable{  
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  top: 9rem;
+}
+.TitleTable{
+  text-align: center;
+  margin-bottom: 45px;
+  font-size: 38px;
+}
+
+.ContainerTable{
+  position: absolute;
+  width: 75rem;
+  height: auto;   
+  left: 22rem;
+  padding: 10px;
+  margin: -25px 0 0 -25px;
+  border: 1px solid black;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;  
+}
+
+.ColumReferences{
+  text-align: left;
+  padding: 5px 0px 5px 0px;
+}
+
+
+@media screen and (min-width: 1280px){
+  /* Estilos específicos para pantallas grandes */
+  .ContainerTable { 
+   display: flex;
+    left: 8rem;
+    font-size: 15px;
+    border: 1px solid blue;
+  }
+}
+@media screen and (max-width: 1025px){
+  .ContainerTable{
+     border: 1px solid green;
+  }
+}
+  /* Puedes agregar más estilos aquí */
+@media screen and (min-width: 1440px){
+  .ContainerTable {
+    display: flex;
+    font-size: 15px;
+    left: 22rem;
+    border: 1px solid red;
+  }
+}
+
+
+
+
+

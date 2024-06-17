@@ -1,0 +1,52 @@
+/* MapModal.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+.map-modal {
+  display: none; /* Inicialmente oculto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+  z-index: 999; /* Asegura que el modal esté encima de otros elementos */
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo para el contenido del modal */
+.map-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ancho del modal */
+  max-width: 400px; /* Ancho máximo */
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para el botón de cierre */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Estilo para el título del modal */
+.InfoModalCard {
+   font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+/* Estilo para el contenido del mapa dentro del modal */
+.map-container {
+  height: 300px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+}

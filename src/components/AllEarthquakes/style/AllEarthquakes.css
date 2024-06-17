@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+/* 
+font-size: 20px;
+font-family: 'Poppins', sans-serif; 
+*/
+
+.SearchCity{
+  position:relative;
+  display:flex;
+  left: 30rem;
+  padding: 15px;
+  width: 18rem;
+  border: 2px solid  #5DADE2;
+  margin: 108px 0px 30px 0px; 
+  border-radius: 15px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.loaderall{
+  position: relative;
+  top:48%;
+  left: 38%;
+  width: 300px;
+ 
+}
+
+@media screen and (max-width: 1025px){
+ .SearchCity{
+   position:relative;
+    left: 40rem;
+   border: 2px solid  yellow;
+     
+  }
+}
+  /* Puedes agregar más estilos aquí */
+@media screen and (min-width: 1440px){
+  .SearchCity{
+    left: 48rem;
+    border: 2px solid red;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* Estilos específicos para pantallas grandes */
+  .SearchCity{
+    left: 30rem;
+    border: 2px solid blue;
+  }
+  
+}
+
