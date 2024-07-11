@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "dependencies": {
+    "types-registry": "^0.1.685"
+  },
+  "devDependencies": {
+    "@types/babel__code-frame": "^7.0.5",
+    "@types/babel__core": "^7.20.3",
+    "@types/babel__generator": "^7.6.6",
+    "@types/babel__template": "^7.4.3",
+    "@types/babel__traverse": "^7.20.3",
+    "@types/gensync": "^1.0.2",
+    "@types/geojson": "^7946.0.12",
+    "@types/leaflet": "^1.9.12",
+    "@types/node": "^20.8.10",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "@types/semver": "^7.5.4",
+    "@types/styled-components": "^5.1.34"
+  }
+}
