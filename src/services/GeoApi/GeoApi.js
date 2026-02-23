@@ -10,13 +10,18 @@ class GeoApi {
   async fetchDataFromApi() {
     const apiUrl = generateUrl(this.requirements, this.name);
 
-    const headers = {
-      'X-RapidAPI-Key': '256eadd6c0msh6925a86ac675d10p19734bjsna5c667936a72',
-      'X-RapidAPI-Host': 'everyearthquake.p.rapidapi.com',
+    const options = {
+      method: 'GET',
+      headers: {
+        'x-rapidapi-key': '0414e01166msh267ba361006cba8p110a40jsndd9b3acdbf5f',
+        'x-rapidapi-host': 'everyearthquake.p.rapidapi.com'
+      }
     };
 
     try {
-      const response = await fetch(apiUrl, { headers });
+      console.log("Enviando petición a:", apiUrl);
+      console.log("Con options:", options);
+      const response = await fetch(apiUrl, options);
 
       if (response.status === 429) {
         throw new Error("Error 429: Too Many Requests");

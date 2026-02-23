@@ -3,99 +3,100 @@
 .CardRember {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  width: 91%;
-  justify-content: center;    
+  gap: 24px;
+  width: 100%;
+  justify-content: center;
+  padding: 20px;
 }
 
-.tarjeta{
-  font-family: 'Poppins', sans-serif;
+.tarjeta {
+  font-family: 'Outfit', sans-serif;
   position: relative;
   z-index: 2;
-  width: 220px;
-  height: 250px;
+  width: 250px;
+  height: auto;
+  min-height: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 10px;
-  border-radius: 10px;
-  backdrop-filter: blur(30px);
-  border: 1px solid  #5DADE2;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
-  cursor: pointer;  
+  padding: 24px 20px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: #334155;
 }
 
-.tarjeta:hover{
-  margin: 5px;
-  transform: scale(1.05);
-  outline: 2px solid #3498DB;
-  outline-offset: 5px;  
+.tarjeta:hover {
+  transform: translateY(-4px);
+  border-color: #CBD5E1;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
-.textTitleCard{
-  position: absolute;
+
+.textTitleCard {
   font-size: 15px;
+  font-weight: 600;
   text-align: center;
-  
-}
-.MwMagnitude{
-   margin-top: 60px; 
+  color: #0F172A;
+  /* Slate 900 */
+  margin-bottom: 12px;
+  line-height: 1.4;
 }
 
-.IconCard{
-  position: absolute;
-  width: 59px;
-  height: 52px;
-  top: 152px;
-  left: 127px;
-  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
-  transform: translate(-50%, -50%);
+.MwMagnitude {
+  margin-top: 10px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #EA580C;
+  /* Orange 600 for magnitude */
 }
-.CityCard{
-  position: absolute;
-  top: 12rem;
+
+.IconCard {
+  width: 45px;
+  filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.1));
+  margin: 10px 0;
+  opacity: 0.8;
+}
+
+.CityCard {
   font-size: 14px;
-  
+  color: #64748B;
+  /* Slate 500 */
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.4;
 }
 
 
 .CardButton {
-  background-color:  #3498DB ;
- border: none;
- padding: 10px;
- font-size: 1rem;
- width: 8em;
- border-radius: 1rem;
- color: white;
- box-shadow: 0 0.4rem #dfd9d9;
- cursor: pointer;
- transition: 0.3s;
-  text-align: center;
-}
-
-.CardButton:active {
- color: white;
- box-shadow: 0 0.2rem #dfd9d9;
- transform: translateY(0.2rem);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  color: #0284C7;
+  /* Sky 600 */
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .CardButton:hover:not(:disabled) {
- background: #85C1E9;
- color: white;
- text-shadow: 0 0.1rem #bcb4b4;
+  background: #F8FAFC;
+  border-color: #0284C7;
 }
 
 .CardButton:disabled {
- cursor: auto;
- color: grey;
-}
-.ContainerLoad{
-  position: absolute;
-  top: 15rem;
-  left: 36rem;
+  background: #F1F5F9;
+  color: #94A3B8;
+  border-color: #E2E8F0;
+  cursor: not-allowed;
 }
 
-
-
+.ContainerLoad {
+  display: flex;
+  margin-top: 20px;
+}

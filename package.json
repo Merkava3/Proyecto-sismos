@@ -15,11 +15,13 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.1",
+    "@reduxjs/toolkit": "^2.11.2",
     "animate.css": "^4.1.1",
     "leaflet": "^1.9.4",
     "normalize.css": "^8.0.1",
     "react-javascript": "file:",
     "react-leaflet": "^4.2.1",
+    "react-redux": "^9.2.0",
     "react-router": "^6.23.1",
     "react-router-dom": "^6.23.1",
     "styled-components": "^6.1.11"

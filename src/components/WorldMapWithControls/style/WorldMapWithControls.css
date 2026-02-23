@@ -1,177 +1,229 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
-.WrapperCoords{
+.WrapperCoords {
   position: absolute;
-  width: 35%;
-  height: auto;  
-  padding: 8px;  
-  z-index: 1000; 
+  top: 20px;
+  left: 20px;
+  width: auto;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: 'Outfit', sans-serif;
+  color: #0F172A;
+  /* Slate 900 */
 }
 
-.WrapperSelect{  
-  font-family: 'Poppins', sans-serif;
-  width: 30rem;
-  height: auto;
-  padding: 17px 23px 5px 7px;
-  box-sizing: border-box;
-  border: 2px solid  #5DADE2;
-  border-radius: 30px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  margin: 18px 0px 0px 13px;
-  font-size: 13px;
+/* Base Panel Styling */
+.WrapperSelect,
+.WrapperOptions {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  /* Slate 200 */
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-.LabelCoords{
-  margin-right: 10px;
-  color: #CCD1D1;
-  font-weight: 900;  
+.WrapperSelect {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  gap: 15px;
+  width: fit-content;
 }
 
-.SelectCoords{
-  width: 66%;
-  height: 30px; 
+.LabelCoords {
+  font-weight: 600;
+  font-size: 14px;
+  color: #475569;
+  /* Slate 600 */
+  margin: 0;
+  white-space: nowrap;
 }
 
-.ButtonCalculer{
-  position: absolute;
-  top: 40px;
-  width: 40px;
-  height: 40px;
-  margin-left:12px;
-  background-color:  #5DADE2;
-  border: none;
-  border-radius: 50%;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.13);
-  transition: all 700ms ease;
+.SelectCoords {
+  height: 38px;
+  border: 1px solid #CBD5E1;
+  /* Slate 300 */
+  border-radius: 6px;
+  padding: 0 10px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: #0F172A;
+  background-color: #F8FAFC;
+  /* Slate 50 */
+  outline: none;
+  min-width: 150px;
 }
-.ButtonCalculer:hover{
-  background-color: #85C1E9 ;
-  cursor: pointer;
+
+.SelectCoords:focus {
+  border-color: #0284C7;
+  /* Sky 600 */
 }
 
 .Recients {
-  margin: 5px 0px 0px 100px;   
-}
-
-.WrapperOptions{
   display: flex;
-   flex-direction: column;  
-  width: 484px;   
-  height: auto;  
-  padding: 10px;  
+  align-items: center;
+  gap: 8px;
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
 }
 
-.ButtonOptions{
-  display: flex; 
-  flexDirection: row;
-  margin-bottom: 9px;
-  text-align: left; 
-  width: 11rem;
-  height: 32px;
-  background: #5DADE2;
-  border: none;  
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  border-radius: 15px; 
-  opacity: 0.6;
-  transition: all 700ms ease; 
-}
-.ButtonOptions:hover{
-  background-color: #85C1E9 ;
-  cursor: pointer;
-}
-.ButtonOptionsIcon{
-  color: white;
-  margin: 5px 0px 5px 5px;
-}
-.ButtonOptionsTitle{ 
-  font-family: 'Poppins', sans-serif;
-  margin: 5px 0px 5px 10px;
-  font-size: 14px;
-  font-weight: bold;
-  color: white;
-
-}
-.OptionMagnitud{
+.ButtonCalculer {
   display: flex;
-  flex-direction: row;
-  width: 30rem;  
-}
-.SelectMagnitude{
-  width: 5rem;
-  height: 31px;
-  background: white;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background-color: #0284C7;
+  /* Sky 600 */
   border: none;
-  border-radius: 10px;
-  margin-inline: 10px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.2);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  margin-left: 5px;
 }
-.OptionCount{
+
+.ButtonCalculer:hover {
+  background-color: #0369A1;
+  /* Sky 700 */
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.3);
+}
+
+/* Options Panel */
+.WrapperOptions {
   display: flex;
-  flex-direction: row;
-   width: 30rem;
- 
+  flex-direction: column;
+  padding: 15px;
+  gap: 12px;
+  width: fit-content;
+  min-width: 260px;
 }
-.SelectCount{  
-  width: 9rem;
-  height: 26px;
-  border: none; 
-  margin-inline: 10px;
-  border-radius: 5px;
-  background: white;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;  
+
+.OptionMagnitud,
+.OptionCount,
+.OptionUnits {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.ContainerCount{
-  padding-inline: 4px;
+
+.ButtonOptions {
+  display: flex;
+  align-items: center;
+  width: 170px;
+  height: 40px;
+  background: #F1F5F9;
+  /* Slate 100 */
+  border: 1px solid #E2E8F0;
+  /* Slate 200 */
+  border-radius: 8px;
+  padding: 0 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #0F172A;
 }
+
+.ButtonOptions:hover {
+  background: #E2E8F0;
+  /* Slate 200 */
+}
+
+.ButtonOptionsIcon {
+  color: #0284C7;
+  /* Sky 600 */
+  font-size: 16px;
+  margin-right: 12px;
+}
+
+.ButtonOptionsTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Inner Modals/Controls in Options */
+.SelectMagnitude,
+.SelectCount,
+.ContainerUnits {
+  height: 40px;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  /* Slate 300 */
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+}
+
+.SelectMagnitude {
+  padding: 0 10px;
+  font-family: 'Outfit';
+  font-size: 14px;
+}
+
+.ContainerCount {
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  width: 120px;
+  justify-content: space-between;
+}
+
 .CountIncrementar,
 .CountDercrementar {
-  margin-inline: 13px;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
   border: none;
-  transition: all 700ms ease;
-  background-color: #5DADE2;
-  color: white;
+  background-color: #F1F5F9;
+  /* Slate 100 */
+  color: #0F172A;
   font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
 .CountIncrementar:hover,
 .CountDercrementar:hover {
-  background: #85C1E9;
-  cursor:pointer;
-}
-.OptionUnits{
- display: flex;
-flex-direction: row;
-width: 30rem; 
+  background-color: #E2E8F0;
+  color: #0284C7;
 }
 
-.inputUnits{
-  width: 11em;
-  height: 20px;  
+.ContainerUnits {
+  height: auto;
+  padding: 12px;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
 }
 
-.ContainerUnits{
-  width: 12rem;
-  height: 53px;
-  border-radius: 10px;
-  background-color: white;
-  margin-left: 10px;
-  padding: 8px 0px 0px 8px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;  
-  
+.inputUnits {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  outline: none;
+  font-family: 'Outfit';
 }
-.OpUntisChecbox{
+
+.inputUnits:focus {
+  border-color: #0284C7;
+}
+
+.OpUntisChecbox {
   display: flex;
-  flex-direction: row;
-  margin: 3px 0px 0px 30px;  
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  align-items: center;
+  gap: 15px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
 }
-.InputUnitsKm{
-  padding-right: 12px;     
-}
-
-
-

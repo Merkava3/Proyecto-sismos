@@ -1,7 +1,9 @@
 /* ModalWrapper */
 .ModalWrapper {
   position: fixed;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(15, 23, 42, 0.4);
+  /* Slate 900 semi-transparent */
+  backdrop-filter: blur(4px);
   top: 0;
   right: 0;
   bottom: 0;
@@ -10,13 +12,10 @@
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.3s;
-}
-
-.ModalWrapper.animate__headShake {
-  animation: headShake 5s ease infinite;
-  animation-duration: 8s;
-  animation-iteration-count: 1;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ModalWrapper.show {
@@ -26,54 +25,68 @@
 }
 
 /* ContainerMsg */
-.ContainerMsg { 
-  width: 430px;
-  height: auto;
-  margin: 199px 0px 0px 425px;
-  background: white;
-  padding: 33px;
-  border-radius: 12px;
-  border: 3px solid var(--modal-border-color); /* Use a CSS variable for the border color */
+.ContainerMsg {
+  width: 90%;
+  max-width: 400px;
+  background: #FFFFFF;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  position: relative;
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  color: #0F172A;
+}
+
+.ContainerMsg h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 /* ColorContainer */
 .ColorContainer {
+  margin-top: 20px;
+  padding: 25px 15px;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+.ColorContainer h3 {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.ColorContainer a {
   display: inline-block;
-  border: 1px solid black;
-  width: 400px;
-  height: 100px;
-  background-color: var(--modal-color); /* Use a CSS variable for the background color */
-  border-radius: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  margin-top: 15px;
+  font-size: 13px;
+  color: inherit;
+  opacity: 0.8;
+  font-weight: 500;
+  text-decoration: underline;
 }
 
 /* CloseButton */
 .CloseButton {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  padding: 0.5em;  
-  border-radius: 50%;
+  top: 15px;
+  right: 15px;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.CloseButton:hover {
+  transform: scale(1.1);
 }
 
 /* Scale */
 .Scale {
-  font-size: 30px;
+  font-size: 48px;
   text-align: center;
-  font-weight: 900;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
 }
-
-
-@media screen and (max-width: 1025px){
- .ContainerMsg{
-    margin: 205px 0px 0px 410px;
-  }
-}
-  /* Puedes agregar más estilos aquí */
-@media screen and (min-width: 1440px){
-  .ContainerMsg{
-    margin:  219px 0px 0px 697px;
-  }
-}
-

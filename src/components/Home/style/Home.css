@@ -1,61 +1,90 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-.WrapperTable{  
+.WrapperTable {
   position: relative;
-  font-family: 'Poppins', sans-serif;
-  top: 9rem;
+  font-family: 'Outfit', sans-serif;
+  margin-top: 5rem;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
 }
-.TitleTable{
+
+.TitleTable {
   text-align: center;
-  margin-bottom: 45px;
-  font-size: 38px;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 600;
+  color: #0F172A;
+  /* Slate 900 */
+  letter-spacing: -0.5px;
 }
 
-.ContainerTable{
-  position: absolute;
-  width: 75rem;
-  height: auto;   
-  left: 22rem;
-  padding: 10px;
-  margin: -25px 0 0 -25px;
-  border: 1px solid black;
-  border-radius: 20px;
+.ContainerTable {
+  width: 100%;
+  max-width: 1200px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  /* Slate 200 */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-collapse: collapse;
+  overflow: hidden;
+  color: #334155;
+  /* Slate 700 */
+  font-size: 14px;
+}
+
+.ContainerTable th {
+  background: #F8FAFC;
+  /* Slate 50 */
+  color: #64748B;
+  /* Slate 500 */
+  padding: 16px 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.ContainerTable td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #F1F5F9;
+  /* Slate 100 */
+  transition: background 0.2s ease;
   text-align: center;
-  font-size: 15px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;  
+  vertical-align: middle;
 }
 
-.ColumReferences{
-  text-align: left;
-  padding: 5px 0px 5px 0px;
+.ContainerTable tr {
+  transition: background-color 0.2s ease;
 }
 
+.ContainerTable tr:hover {
+  background-color: #F8FAFC;
+  /* Slate 50 */
+}
 
-@media screen and (min-width: 1280px){
-  /* Estilos específicos para pantallas grandes */
-  .ContainerTable { 
-   display: flex;
-    left: 8rem;
-    font-size: 15px;
-    border: 1px solid blue;
-  }
+.ContainerTable tr:last-child td {
+  border-bottom: none;
 }
-@media screen and (max-width: 1025px){
-  .ContainerTable{
-     border: 1px solid green;
-  }
+
+.ColumReferences {
+  text-align: left !important;
+  color: #475569;
+  /* Slate 600 */
+  line-height: 1.5;
 }
-  /* Puedes agregar más estilos aquí */
-@media screen and (min-width: 1440px){
+
+@media screen and (max-width: 1025px) {
   .ContainerTable {
-    display: flex;
-    font-size: 15px;
-    left: 22rem;
-    border: 1px solid red;
+    font-size: 13px;
+  }
+
+  .ContainerTable th,
+  .ContainerTable td {
+    padding: 12px 10px;
   }
 }
-
-
-
-
-

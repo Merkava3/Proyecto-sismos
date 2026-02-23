@@ -1,152 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 .RouterNav {
   display: flex;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 3;
-  width: 90%;
-  padding: 10px 78px;
-  background: #4a98f7;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
+  z-index: 100;
+  width: 100%;
+  padding: 18px 60px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   justify-content: space-between;
   align-items: center;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.3s ease;
 }
 
 .NavLinks {
   display: flex;
   align-items: center;
   list-style: none;
-  font-size: 17px;
-  font-family: 'Ubuntu', sans-serif;
-  column-gap: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  column-gap: 35px;
+  margin: 0;
+  padding: 0;
 }
 
-.NavItem {
-  margin-inline: 4px;
+.NavItem,
+.NavItemLibrary {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .RouterNavLink {
-  color: #fff;
+  color: #475569;
+  /* Slate 600 */
   text-decoration: none;
+  transition: color 0.2s ease;
+  padding: 5px 0;
+  position: relative;
+}
+
+.RouterNavLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0284C7;
+  /* Sky 600 */
+  transition: width 0.3s ease;
+}
+
+.RouterNavLink:hover::after,
+.RouterNavLink[aria-current="page"]::after {
+  width: 100%;
+}
+
+.RouterNavLink:hover,
+.RouterNavLink[aria-current="page"] {
+  color: #0F172A;
+  /* Slate 900 */
 }
 
 .logo {
   font-size: 22px;
-  font-weight: 500;
-  color: #fff;
+  font-weight: 700;
   text-decoration: none;
-  margin-left: 11rem;
+  margin: 0;
+  letter-spacing: -0.5px;
+  color: #0F172A;
+  display: flex;
+  align-items: center;
 }
 
-.Submenu {
-   display: flex;
+.logo::before {
+  content: '●';
+  color: #0284C7;
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.Submenu,
+.SubmenuLibrary {
   position: absolute;
-  top: 75px;
-  left: 75%;
-  display: block;
-  background: #4a98f7;
-  padding: 10px;
-  z-index: 1;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  padding: 10px 0;
+  z-index: 99;
   list-style: none;
-  width: 160px; /* ajusta el ancho del submenú según tus necesidades */
+  min-width: 200px;
   opacity: 0;
-  border-radius: 0px 0px 10px 10px;
-  transform: translateY(-10px); /* oculta el submenú inicialmente */
-  transition: opacity 0.3s, transform 0.5s, visibility 10s; /* transición de visibilidad */
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  visibility: hidden;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0;
 }
 
 .NavItem:hover .Submenu,
-.Submenu:hover {
-  display: block;
+.NavItemLibrary:hover .SubmenuLibrary {
   opacity: 1;
-  transform: translateY(0);
-  visibility: visible; /* Hacer que el submenú sea visible en el hover */
-}
-
-/* Agrega estilos para ocultar con retraso al quitar el cursor */
-.NavItem:not(:hover) .Submenu {
-  opacity: 0;
-  transform: translateY(-10px);
-  visibility: hidden;
+  visibility: visible;
+  transform: translateX(-50%) translateY(15px);
 }
 
 .SubmenuItem {
-  margin: 4px 0;
+  margin: 0;
+  padding: 0;
 }
 
-.SubmenuItem > .RouterNavLink {
-  color: #fff;
+.SubmenuItem>.RouterNavLink {
+  color: #475569;
   text-decoration: none;
   display: block;
-  padding: 8px 20px;
-  transition: background 0.3s;
+  padding: 10px 20px;
+  transition: all 0.2s ease;
+  font-size: 14px;
 }
 
-.SubmenuItem > .RouterNavLink:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-.SubmenuLibrary {
-  display: block;
-  position: absolute;
-  top: 75px;
-  left: 82%; /* Ajusta la posición según tus necesidades */
-  background: #4a98f7;
-  padding: 10px;
-  z-index: 1;
-  list-style: none;
-  width: 160px; /* Ajusta el ancho del submenú según tus necesidades */
-  opacity: 0;
-  border-radius: 0px 0px 10px 10px;
-  transform: translateY(-10px); /* Oculta el submenú inicialmente */
-  transition: opacity 0.3s, transform 0.3s, visibility 0.3s; /* Transición de visibilidad con retraso */
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+.SubmenuItem>.RouterNavLink::after {
+  display: none;
 }
 
-.NavItemLibrary:hover .SubmenuLibrary,
-.SubmenuLibrary:hover {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible; /* Hacer que el submenú sea visible en el hover */
+.SubmenuItem>.RouterNavLink:hover {
+  background: #F8FAFC;
+  color: #0284C7;
+  /* Sky 600 */
 }
 
-/* Agrega estilos para ocultar con retraso al quitar el cursor */
-.NavItemLibrary:not(:hover) .SubmenuLibrary {
-  opacity: 0;
-  transform: translateY(-10px);
-  visibility: hidden;
-  transition-delay: 0.2s; /* Retraso antes de ocultar */
-}
-
-
-
-@media screen and (min-width: 1280px) {
-  /* Estilos específicos para pantallas grandes */
-  .RouterNav{
-    width: 92%;
+@media screen and (max-width: 1024px) {
+  .RouterNav {
+    padding: 15px 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
   }
-  
-  .Submenu{
-    display: flex;
-    left: 73%;
-    /* border: 1px solid yellow; */
-  }
-}
-  /* Puedes agregar más estilos aquí */
-@media screen and (min-width: 1440px){
-  .RouterNav{
-    width: 92%;
-  }
-  .Submenu{
-    display: flex;
-    left: 80%;    
-  }
-  .SubmenuLibrary{    
-    left: 87%;    
+
+  .NavLinks {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 14px;
+    column-gap: 20px;
   }
 }

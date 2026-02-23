@@ -27,51 +27,51 @@ function formatDate(dateString) {
   return formattedDate;
 }
 
- export function sortObj (data) {
-    const coords = data.map(data => ({ 
-        Title: data.title,
-        City: data.city === ""? "cerca de la ciudad" : data.city,
-        Subnational: data.subnational == ""? "zona cercana" : data.subnational,
-        Date: formatDate(data.date), 
-        Magnitude: data.magnitude,
-        url: data.url,     
-        locations: [          
-           parseFloat(data.latitude),
-           parseFloat(data.longitude)          
-        ] 
-                 
-        }));      
-       return coords;    
-  
+export function sortObj(data) {
+  const coords = data.map(data => ({
+    Title: data.title,
+    City: data.city === "" ? "cerca de la ciudad" : data.city,
+    Subnational: data.subnational == "" ? "zona cercana" : data.subnational,
+    Date: formatDate(data.date),
+    Magnitude: data.magnitude,
+    url: data.url,
+    locations: [
+      parseFloat(data.latitude),
+      parseFloat(data.longitude)
+    ]
+
+  }));
+  return coords;
+
 }
-export function sortObjCrtls(name, data){ 
- return name !== "LatestEarthquakeNearMe" ? sortObj(data) : MyLocation(data)  
+export function sortObjCrtls(name, data) {
+  return name !== "LatestEarthquakeNearMe" ? sortObj(data) : MyLocation(data)
 }
 
 export const MyLocation = (data) => {
   const coords = data.map(data => ({
-  title: data.title,
-  date:formatDate(data.date),
-  url:data.url,
-  })) 
+    title: data.title,
+    date: formatDate(data.date),
+    url: data.url,
+  }))
   return coords;
 }
 
 
-export const generateUrl = (requeriments, name) => { 
+export const generateUrl = (requeriments, name) => {
   console.log(name)
   console.log("control de requerimiento url")
   const MapUrl = {
-    "RecentEarthquakes":`https://everyearthquake.p.rapidapi.com/recentEarthquakes?interval=P1Y2M3W4DT1H2M3S&start=${requeriments.start}&count=${requeriments.count}&type=earthquake&latitude=${requeriments.latitude}&longitude=${requeriments.longitude}&radius=${requeriments.radius}&units=${requeriments.units}&magnitude=${requeriments.magnitude}&intensity=${requeriments.intensity}`,
-    "Earthquakes":`https://everyearthquake.p.rapidapi.com/earthquakes?start=${requeriments.start}&count=${requeriments.count}&type=earthquake&latitude=${requeriments.latitude}&longitude=${requeriments.longitude}&radius=${requeriments.radius}&units=${requeriments.units}&magnitude=${requeriments.magnitude}&intensity=${requeriments.intensity}`,
-    "EarthquakesByDate":`https://everyearthquake.p.rapidapi.com/earthquakesByDate?startDate=${requeriments.startDate}&endDate=${requeriments.endDate}&start=${requeriments.start}&count=${requeriments.count}&type=earthquake&latitude=${requeriments.latitude}&longitude=${requeriments.longitude}&radius=${requeriments.radius}&units=${requeriments.units}&magnitude=${requeriments.magnitude}&intensity=${requeriments.intensity}`,
-    "LatestEarthquakeNearMe":`https://everyearthquake.p.rapidapi.com/latestEarthquakeNearMe?latitude=${requeriments.latitude}&longitude=${requeriments.longitude}`,
-    "AllEarthquakes,PastHour":`https://everyearthquake.p.rapidapi.com/all_hour.json`,
-    "AllEarthquakes,PastDay":`https://everyearthquake.p.rapidapi.com/all_day.json`,
-    "AllEarthquakes,Past7Days":`https://everyearthquake.p.rapidapi.com/4.5_week.json`,
-    "AllEarthquakes,Past30Days":`https://everyearthquake.p.rapidapi.com/4.5_month.json`,      
+    "RecentEarthquakes": `https://everyearthquake.p.rapidapi.com/recentEarthquakes?interval=P1Y2M3W4DT1H2M3S&start=${requeriments.start}&count=${requeriments.count}&type=earthquake&latitude=${requeriments.latitude}&longitude=${requeriments.longitude}&radius=${requeriments.radius}&units=${requeriments.units}&magnitude=${requeriments.magnitude}&intensity=${requeriments.intensity}`,
+    "Earthquakes": `https://everyearthquake.p.rapidapi.com/earthquakes?start=${requeriments.start}&count=${requeriments.count}&type=earthquake&latitude=${requeriments.latitude}&longitude=${requeriments.longitude}&radius=${requeriments.radius}&units=${requeriments.units}&magnitude=${requeriments.magnitude}&intensity=${requeriments.intensity}`,
+    "EarthquakesByDate": `https://everyearthquake.p.rapidapi.com/earthquakesByDate?startDate=${requeriments.startDate}&endDate=${requeriments.endDate}&start=${requeriments.start}&count=${requeriments.count}&type=earthquake&latitude=${requeriments.latitude}&longitude=${requeriments.longitude}&radius=${requeriments.radius}&units=${requeriments.units}&magnitude=${requeriments.magnitude}&intensity=${requeriments.intensity}`,
+    "LatestEarthquakeNearMe": `https://everyearthquake.p.rapidapi.com/latestEarthquakeNearMe?latitude=${requeriments.latitude}&longitude=${requeriments.longitude}`,
+    "AllEarthquakes,PastHour": `https://everyearthquake.p.rapidapi.com/recentEarthquakes?interval=PT1H&count=100&type=earthquake`,
+    "AllEarthquakes,PastDay": `https://everyearthquake.p.rapidapi.com/recentEarthquakes?interval=P1D&count=100&type=earthquake`,
+    "AllEarthquakes,Past7Days": `https://everyearthquake.p.rapidapi.com/recentEarthquakes?interval=P7D&count=1000&type=earthquake`,
+    "AllEarthquakes,Past30Days": `https://everyearthquake.p.rapidapi.com/recentEarthquakes?interval=P30D&count=1000&type=earthquake`,
   }
-  
+
   console.log(MapUrl[name])
- return MapUrl[name] ?? "N/A"
+  return MapUrl[name] ?? "N/A"
 }

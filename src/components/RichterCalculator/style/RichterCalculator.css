@@ -1,95 +1,63 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-
-.Title{
-position: relative;
-font-family: 'Poppins', sans-serif;
- text-align: center;
- font-size: 50px;
- font-weight: 700;
- top: 100px;  
+.Title {
+  font-family: 'Outfit', sans-serif;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  color: #0F172A;
+  margin-top: 8rem;
+  margin-bottom: 2rem;
+  letter-spacing: -0.5px;
 }
 
-.Box{
-position: absolute; 
-  width: 522px;
-height: 329px;
-  box-sizing: border-box;
-  padding: 19px;
-  left: 26rem;  
-  top: 236px;
-  border-radius: 10px;
-  background-color: white;
-  border: 1px solid black;
- box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  
+.Box {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 35px;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
-.FormContainer{
-width: min(100% - 47px, 830px);
-margin-inline: 7px;
-border-radius: 19px;
-padding: 10px;
-
+.FormContainer {
+  display: flex;
+  flex-direction: column;
 }
 
-.LabelName{
-font-family: 'Poppins', sans-serif;
-font-size: 24px;
-letter-spacing: 1.6pt;
-word-spacing: 0.4pt;
-   font-weight: 700;
+.LabelName {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #475569;
+  /* Slate 600 */
+  margin-bottom: 8px;
+  margin-top: 15px;
 }
 
-.formtext{
-  margin: 33px 19px 0px 4px;
-  width: 200px;
-  height: 30px; 
-  background-color: #f5f5f5;
-  color: #34495E ;
-  padding: .15rem .5rem;
-  min-height: 30px;
-  border-radius: 4px;
+.InputText {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #CBD5E1;
+  /* Slate 300 */
+  border-radius: 8px;
+  color: #0F172A;
+  background-color: #F8FAFC;
   outline: none;
-  border: none;
-  line-height: 1.15;
-  box-shadow: 0px 10px 20px -18px;  
-}
-.InputText{
-  font-size: 16px;
-  width: 253px;
-  height: 36px;
-  margin: 8px 0px 12px 0px;
-  border: 1px solid  lightgrey;
-  border-radius: 5px;
-  outline-style: none;
+  transition: all 0.2s ease;
 }
 
-  
-
-.InputText:hover{
-   outline: 1px solid lightgrey;   
+.InputText:hover {
+  border-color: #94A3B8;
+  /* Slate 400 */
 }
 
-.InputText:focus{
-  border-bottom: 2px solid #5DADE2 ;
-  border-radius: 4px 4px 2px 2px;
-  transition: 0.25s;    
+.InputText:focus {
+  border-color: #0284C7;
+  /* Sky 600 */
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
 }
-
-
-
-@media screen and (max-width: 1025px){
-  .Box{
-    left: 26rem;  
-  }
-}
-  /* Puedes agregar más estilos aquí */
-@media screen and (min-width: 1440px){
-  .Box{
-    left: 43rem;  
-  }
-}
-
-
-
-  

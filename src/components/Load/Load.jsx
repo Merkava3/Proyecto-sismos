@@ -1,11 +1,13 @@
 import './style/Load.css'
 
-const Load  = () => {
+const Load = () => {
   return (
-    <>
-    <div className="loader" ></div>
-    <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-    </>    
+    <div className="LoadingContainer">
+      <div className="loader"></div>
+      <div className="lds-ellipsis">
+        <div></div><div></div><div></div><div></div>
+      </div>
+    </div>
   )
 }
 

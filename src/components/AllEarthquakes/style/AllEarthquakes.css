@@ -1,51 +1,52 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-/* 
-font-size: 20px;
-font-family: 'Poppins', sans-serif; 
-*/
-
-.SearchCity{
-  position:relative;
-  display:flex;
-  left: 30rem;
-  padding: 15px;
-  width: 18rem;
-  border: 2px solid  #5DADE2;
-  margin: 108px 0px 30px 0px; 
-  border-radius: 15px;
-  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+.SearchCity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: fit-content;
+  margin: 100px auto 40px auto;
+  padding: 15px 25px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  /* Slate 200 */
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  font-family: 'Outfit', sans-serif;
 }
 
-.loaderall{
-  position: relative;
-  top:48%;
-  left: 38%;
-  width: 300px;
- 
+.LabelCity {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0F172A;
+  /* Slate 900 */
 }
 
-@media screen and (max-width: 1025px){
- .SearchCity{
-   position:relative;
-    left: 40rem;
-   border: 2px solid  yellow;
-     
-  }
-}
-  /* Puedes agregar más estilos aquí */
-@media screen and (min-width: 1440px){
-  .SearchCity{
-    left: 48rem;
-    border: 2px solid red;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  /* Estilos específicos para pantallas grandes */
-  .SearchCity{
-    left: 30rem;
-    border: 2px solid blue;
-  }
-  
+.SearchCity input {
+  padding: 10px 16px;
+  border: 1px solid #CBD5E1;
+  /* Slate 300 */
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: #0F172A;
+  background-color: #F8FAFC;
+  /* Slate 50 */
+  outline: none;
+  transition: all 0.2s ease;
+  min-width: 250px;
 }
 
+.SearchCity input:focus {
+  border-color: #0284C7;
+  /* Sky 600 */
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.loaderall {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 50px;
+}

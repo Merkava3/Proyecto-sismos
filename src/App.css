@@ -1,10 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
-*{
-font-family: 'Poppins', sans-serif;
+* {
+  font-family: 'Outfit', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
-background-image: url('https://img.freepik.com/vector-gratis/mapa-mundo-diseno-vectores-concepto-lineas-conectadas_1017-42675.jpg?w=1060&t=st=1683303279~exp=1683303879~hmac=60493a59e50764a2a5f63d6111c5fdc4c6c9289c129417a34f9028553a03737c');
-  background-repeat: no-repeat;
-  background-size: cover;
+
+body {
+  background-color: #F8FAFC;
+  /* Slate 50 */
+  color: #0F172A;
+  /* Slate 900 */
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  /* Slate 100 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  /* Slate 300 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+  /* Slate 400 */
 }
