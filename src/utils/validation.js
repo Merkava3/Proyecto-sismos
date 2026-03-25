@@ -14,7 +14,7 @@ export function HandleDecimalNumber (event, value) {
   const key = event.key;  
 
   // Solo se permiten números y un punto decimal
-  const validKeys = /[0-9.-]/;
+  const validKeys = /^[0-9.-]+$/;
 
   // El signo menos solo está permitido como primer caracter
   const minusSign = /^-/;

@@ -8,3 +8,6 @@ dist-ssr
 .upm
 skills-lock.json
 $null
+.replit
+walkthrough.md
+replit_zip_error_log.txt
