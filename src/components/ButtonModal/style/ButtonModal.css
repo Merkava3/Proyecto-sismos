@@ -1,31 +1,34 @@
 .ButtonEvent {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 600;
   display: block;
   outline: 0;
   border: none;
   cursor: pointer;
-  background: #0284C7;
-  /* Sky 600 */
+  background: var(--brand-primary);
   color: #fff;
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
   transition: all 0.2s ease;
   width: 100%;
-  margin-top: 25px;
+  margin-top: 1.5rem;
 }
 
-.ButtonEvent:hover {
-  background: #0369A1;
-  /* Sky 700 */
+.ButtonEvent:hover:not(:disabled) {
+  background: var(--brand-secondary);
   transform: translateY(-1px);
   box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.2), 0 2px 4px -1px rgba(2, 132, 199, 0.1);
 }
 
-.ButtonEvent:active {
+.ButtonEvent:active:not(:disabled) {
   transform: translateY(0);
-  background: #075985;
-  /* Sky 800 */
+  background: var(--brand-primary);
   box-shadow: none;
+}
+
+.ButtonEvent:disabled {
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  cursor: not-allowed;
 }

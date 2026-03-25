@@ -1,34 +1,64 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+/* Error 429 Component Styles — Adhering to .interface-design */
 
-.ErrorWrapper{
-  position: relative; 
+.ErrorContainer429 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  width: 100%;
+  padding: 2rem;
+  font-family: 'Outfit', sans-serif;
 }
 
-.ErrorContainer{
-  display: block;
-  box-sizing: border-box;
-  width: 42rem;
-  height: auto;
-  padding: 20px;  
+.ErrorCard429 {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 3rem 2rem;
+  max-width: 480px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ErrorCard429::before {
+  content: '';
   position: absolute;
-  top: 27px;
-  left: 25%; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--status-warning);
 }
 
-.MsgRequest{
-  color: #5DADE2;
-  text-align: center;
-  font-size: 100px;
-  font-family: 'Poppins', sans-serif; 
+.ErrorTitle429 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.05em;
+  line-height: 1;
 }
 
-.Msg{
-  font-family: 'Poppins', sans-serif;
-  text-align: center;
-  font-size: 30px;  
+.ErrorMsg429 {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
 }
-.DifficultiesMsg {
- width: 50%;
- height: auto;
- margin-left: 10rem;
- }
+
+.ErrorIconWrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  margin: 0 auto;
+}
+
+.ErrorEmoji429 {
+  font-size: 2rem;
+}

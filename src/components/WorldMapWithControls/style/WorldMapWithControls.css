@@ -45,7 +45,7 @@
 
 .SelectCoords {
   height: 38px;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   padding: 0 0.75rem;
   font-family: 'Outfit', sans-serif;
@@ -145,7 +145,7 @@
 .ContainerUnits {
   height: 42px;
   background: var(--bg-secondary);
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   display: flex;
@@ -201,7 +201,7 @@
 .inputUnits {
   width: 100%;
   padding: 0.625rem 0.875rem;
-  border: 1px solid var(--border-strong);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   outline: none;
   font-family: 'Outfit';

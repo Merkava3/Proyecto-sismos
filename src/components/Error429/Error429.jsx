@@ -1,17 +1,21 @@
-import './style/Error429.css'
+import React from 'react';
+import './style/Error429.css';
+
+/**
+ * Componente mostrado cuando la API alcanza el límite de peticiones (Rate Limit 429).
+ */
 const Error429 = () => {
   return (
-    <>
-      <div className="ErrorWrapper">
-       <div className="ErrorContainer">
-           <h1 className="MsgRequest"> Error 429 </h1>
-         <audio src="/path/to/sound.mp3" loop={true} autoPlay={true} preload="auto"></audio>
-            <p className="Msg">Hay muchas peticiones espere....</p>
-          <img className = "DifficultiesMsg" src="https://pbs.twimg.com/media/As0rQOSCMAEhDo1.jpg"/> 
+    <article className="ErrorContainer429">
+      <div className="ErrorCard429">
+        <h1 className="ErrorTitle429">Error 429</h1>
+        <p className="ErrorMsg429">El servidor está sobrecargado con peticiones. Por favor, espera unos minutos e intenta nuevamente.</p>
+        <div className="ErrorIconWrapper">
+          <span role="img" aria-label="Alerta" className="ErrorEmoji429">⚠️</span>
         </div>
-    </div>
-    </>
-  )
-}
+      </div>
+    </article>
+  );
+};
 
-export default Error429
+export default Error429;
