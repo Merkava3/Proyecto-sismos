@@ -2,45 +2,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 1.25rem;
   width: fit-content;
-  margin: 100px auto 40px auto;
-  padding: 15px 25px;
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  /* Slate 200 */
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  margin: 8rem auto 3rem auto;
+  padding: 1.25rem 2rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   font-family: 'Outfit', sans-serif;
+  transition: all 0.3s ease;
 }
 
 .LabelCity {
-  font-size: 15px;
-  font-weight: 600;
-  color: #0F172A;
-  /* Slate 900 */
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .SearchCity input {
-  padding: 10px 16px;
-  border: 1px solid #CBD5E1;
-  /* Slate 300 */
-  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  color: #0F172A;
-  background-color: #F8FAFC;
-  /* Slate 50 */
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+  background-color: var(--bg-tertiary);
   outline: none;
-  transition: all 0.2s ease;
-  min-width: 250px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 300px;
 }
 
 .SearchCity input:focus {
-  border-color: #0284C7;
-  /* Sky 600 */
-  background-color: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  border-color: var(--brand-primary);
+  background-color: var(--bg-secondary);
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+}
+
+.SearchCity input::placeholder {
+  color: var(--text-muted);
 }
 
 .loaderall {
@@ -48,5 +48,18 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-top: 50px;
+  padding: 5rem 0;
+}
+
+@media screen and (max-width: 640px) {
+  .SearchCity {
+    flex-direction: column;
+    align-items: stretch;
+    width: 90%;
+    margin-top: 6rem;
+  }
+  
+  .SearchCity input {
+    min-width: 0;
+  }
 }

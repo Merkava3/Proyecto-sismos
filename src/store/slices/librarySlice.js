@@ -1,13 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import GeoApi from '../../services/GeoApi/GeoApi';
-import GeoData from '../../data/Requeriments';
 
+/**
+ * Thunk to fetch earthquake library data.
+ * 'type' format: "AllEarthquakes,PastDay" | "AllEarthquakes,Past7Days" | "AllEarthquakes,Past30Days"
+ */
 export const fetchEarthquakesLibrary = createAsyncThunk(
     'library/fetchEarthquakesLibrary',
     async (type, { rejectWithValue }) => {
         try {
-            const geoApi = new GeoApi(GeoData, type);
-            await geoApi.clearCacheIfNeeded();
+            // Pass magnitude default so Helpers can build the correct /feeds/ URL
+            const geoApi = new GeoApi({ magnitude: 'm4.5' }, type, 60);
             const result = await geoApi.getDataWithCaching();
             return result;
         } catch (error) {
@@ -31,7 +34,7 @@ export const librarySlice = createSlice({
     reducers: {
         setCity: (state, action) => {
             state.city = action.payload;
-            state.page = 1; // reset page on search
+            state.page = 1;
         },
         setPage: (state, action) => {
             state.page = action.payload;

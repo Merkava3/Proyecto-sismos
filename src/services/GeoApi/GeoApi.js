@@ -1,109 +1,109 @@
-import { sortObj, generateUrl } from '../Helpers/Helpers';
+import { sortObj, generateLocalUrl } from '../Helpers/Helpers';
 
+/**
+ * GeoApi service for fetching and caching earthquake data.
+ */
 class GeoApi {
-  constructor(requirements, name) {
-    this.cacheKey = `CacheKey_${name}`;
+  /**
+   * @param {Object} requirements - The requirements for the API call.
+   * @param {string} name - The endpoint name.
+   * @param {number} cacheDurationMins - Cache duration in minutes (default 120).
+   */
+  constructor(requirements, name, cacheDurationMins = 120) {
     this.requirements = requirements;
     this.name = name;
+    this.cacheKey = `CacheKey_${name}`;
+    this.cacheDuration = cacheDurationMins * 60 * 1000;
   }
 
+  /**
+   * Fetches data from the local API.
+   * @throws {Error} If the API call fails or endpoint is not supported.
+   * @returns {Promise<Array>} The earthquake data.
+   */
   async fetchDataFromApi() {
-    const apiUrl = generateUrl(this.requirements, this.name);
+    const localResult = generateLocalUrl(this.requirements, this.name);
+    
+    if (!localResult) {
+      throw new Error(`Endpoint name '${this.name}' is not supported.`);
+    }
 
-    const options = {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-key': '0414e01166msh267ba361006cba8p110a40jsndd9b3acdbf5f',
-        'x-rapidapi-host': 'everyearthquake.p.rapidapi.com'
-      }
-    };
+    const { apiUrl, options } = localResult;
 
     try {
-      console.log("Enviando petición a:", apiUrl);
-      console.log("Con options:", options);
+      console.log(`🌍 Petición: ${apiUrl}`);
       const response = await fetch(apiUrl, options);
 
-      if (response.status === 429) {
-        throw new Error("Error 429: Too Many Requests");
-      }
-
-      if (!response.ok) {
-        throw new Error("Error fetching data from the API");
-      }
+      if (response.status === 429) throw new Error("Error 429: Too Many Requests");
+      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
 
       const data = await response.json();
-      return data.data;
-
+      return data.data || data.earthquakes || [];
     } catch (error) {
       console.error("Fetch Error:", error);
       throw error;
     }
   }
 
-  clearSpecificCache(specificCacheKey) {
-    localStorage.removeItem(specificCacheKey);
-  }
-
+  /**
+   * Retrieves data with local storage caching.
+   * @returns {Promise<Object>} The result and show flag.
+   */
   async getDataWithCaching() {
-    const specificCacheKey = `CacheKey_${this.name}`;
-    this.cacheKey = specificCacheKey;
+    const cachedDataString = localStorage.getItem(this.cacheKey);
 
-    const cachedData = localStorage.getItem(specificCacheKey);
-
-    if (cachedData) {
-      const parsedData = JSON.parse(cachedData);
-      const currentTime = new Date().getTime();
+    if (cachedDataString) {
+      const parsedData = JSON.parse(cachedDataString);
+      const currentTime = Date.now();
       const cacheTime = parsedData.cacheTime || 0;
-      const cacheDuration = 2 * 60 * 60 * 1000; // 2 hours in milliseconds
 
-      if (currentTime - cacheTime < cacheDuration) {
-        if (this.requirementsMatch(parsedData.requirements)) {
-          return { show: true, result: sortObj(parsedData.data) };
-        }
+      const isFresh = (currentTime - cacheTime) < this.cacheDuration;
+      const isMatching = this.requirementsMatch(parsedData.requirements);
+
+      if (isFresh && isMatching) {
+        return { show: true, result: sortObj(parsedData.data) };
       }
     }
 
     try {
       const data = await this.fetchDataFromApi();
 
-      if (data && data.length > 0) {
+      if (data?.length > 0) {
         const formattedData = sortObj(data);
-
-        const newDataToCache = {
-          data: data,
-          cacheTime: new Date().getTime(),
+        const cacheEntry = {
+          data,
+          cacheTime: Date.now(),
           requirements: this.requirements,
         };
 
-        localStorage.setItem(this.cacheKey, JSON.stringify(newDataToCache));
-
-        const limiteTiempo = 2000;
-        await new Promise((resolve) => setTimeout(resolve, limiteTiempo));
-
+        localStorage.setItem(this.cacheKey, JSON.stringify(cacheEntry));
         return { show: true, result: formattedData };
       } else {
-        this.clearSpecificCache(specificCacheKey);
-        return { show: true, result: this.requirements, error: "The returned data is empty" };
+        localStorage.removeItem(this.cacheKey);
+        return { show: true, result: this.requirements, error: "Empty result" };
       }
     } catch (error) {
-      if (error.message === "Error 429: Too Many Requests") {
-        return { show: false, result: null, error: "Error 429: Too Many Requests" };
-      } else {
-        console.error("Error:", error);
-        return { show: false, result: null };
-      }
+      const isRateLimited = error.message.includes("429");
+      return { 
+        show: false, 
+        result: null, 
+        error: isRateLimited ? "Error 429: Too Many Requests" : "Network Error" 
+      };
     }
   }
 
+  /**
+   * Compares requirements for cache validity.
+   */
   requirementsMatch(cachedRequirements) {
     return JSON.stringify(cachedRequirements) === JSON.stringify(this.requirements);
   }
 
-  clearCacheIfNeeded() {
-    //console.log("Clearing cache if needed");
-    if (this.name === "AllEarthquakes,Past7Days" || this.name === "AllEarthquakes,Past30Days") {
-      this.clearSpecificCache(this.cacheKey);
-    }
+  /**
+   * Manually clears the cache for this service.
+   */
+  clearCache() {
+    localStorage.removeItem(this.cacheKey);
   }
 }
 

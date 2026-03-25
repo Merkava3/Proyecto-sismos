@@ -1,0 +1,25 @@
+/* MomentoCalculator — styles (extends RichterCalculator patterns) */
+
+/* MwDetails — extra technical line inside modal */
+.MwDetails {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  font-family: 'Outfit', sans-serif;
+  opacity: 0.85;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* LabelOptional — dim hint inside label */
+.LabelOptional {
+  font-weight: 400;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-muted);
+}
+
+/* MwModal — slightly wider than Richter modal */
+.MwModal {
+  max-width: 480px;
+}

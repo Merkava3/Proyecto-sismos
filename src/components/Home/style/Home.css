@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
 .WrapperTable {
   position: relative;
   font-family: 'Outfit', sans-serif;
@@ -13,49 +11,62 @@
 
 .TitleTable {
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 32px;
-  font-weight: 600;
-  color: #0F172A;
-  /* Slate 900 */
-  letter-spacing: -0.5px;
+  margin-bottom: 2rem; /* Consistent spacing with tokens */
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+}
+
+.TableContainerScroll {
+  width: 100%;
+  max-width: 1200px;
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .ContainerTable {
-  width: 100%;
-  max-width: 1200px;
-  background: #FFFFFF;
-  border-radius: 8px;
-  border: 1px solid #E2E8F0;
-  /* Slate 200 */
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  border-collapse: collapse;
+  min-width: 800px; /* Minimum width to avoid squishing on small mobile screens */
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  border-collapse: separate;
+  border-spacing: 0;
   overflow: hidden;
-  color: #334155;
-  /* Slate 700 */
-  font-size: 14px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
 }
 
 .ContainerTable th {
-  background: #F8FAFC;
-  /* Slate 50 */
-  color: #64748B;
-  /* Slate 500 */
-  padding: 16px 20px;
+  background: var(--bg-primary);
+  color: var(--text-tertiary);
+  padding: 1rem 1.25rem;
   text-transform: uppercase;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  font-size: 12px;
-  border-bottom: 1px solid #E2E8F0;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: left; /* Better readability */
+}
+
+/* Specific alignments for better UI */
+.ContainerTable th:nth-child(3),
+.ContainerTable td:nth-child(3),
+.ContainerTable th:nth-child(5),
+.ContainerTable td:nth-child(5) {
+  text-align: center;
 }
 
 .ContainerTable td {
-  padding: 16px 20px;
-  border-bottom: 1px solid #F1F5F9;
-  /* Slate 100 */
-  transition: background 0.2s ease;
-  text-align: center;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: all 0.2s ease;
   vertical-align: middle;
+}
+
+.ContainerTable tr:last-child td {
+  border-bottom: none;
 }
 
 .ContainerTable tr {
@@ -63,28 +74,40 @@
 }
 
 .ContainerTable tr:hover {
-  background-color: #F8FAFC;
-  /* Slate 50 */
-}
-
-.ContainerTable tr:last-child td {
-  border-bottom: none;
+  background-color: var(--bg-tertiary);
 }
 
 .ColumReferences {
-  text-align: left !important;
-  color: #475569;
-  /* Slate 600 */
-  line-height: 1.5;
+  max-width: 400px;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  font-size: 0.8125rem;
 }
 
 @media screen and (max-width: 1025px) {
+  .WrapperTable {
+    padding: 0 1rem;
+    margin-top: 4rem;
+  }
+
+  .TitleTable {
+    font-size: 1.5rem;
+  }
+
   .ContainerTable {
-    font-size: 13px;
+    font-size: 0.8125rem;
+    display: block;
+    overflow-x: auto; /* Allow horizontal scroll for table on mobile */
   }
 
   .ContainerTable th,
   .ContainerTable td {
-    padding: 12px 10px;
+    padding: 0.75rem 0.625rem;
+    white-space: nowrap; /* Prevent wrapping too much in table cells */
+  }
+  
+  .ColumReferences {
+    white-space: normal; /* Allow wrapping for references */
+    min-width: 250px;
   }
 }

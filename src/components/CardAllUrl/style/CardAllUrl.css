@@ -1,135 +1,169 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+.LibraryContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 400px;
+}
 
 .containerCard {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  width: 91%;
-  justify-content: center; 
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 1rem;
 }
 
-.tarjeta {
-  font-family: 'Poppins', sans-serif;
+.NoDataWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 4rem 1.5rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.tarjeta-all {
+  font-family: 'Outfit', sans-serif;
   position: relative;
-  width: 220px;
-  height: 250px;
+  width: 260px;
+  min-height: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 10px;
-  border-radius: 10px;
-  backdrop-filter: blur(30px);
-  border: 1px solid #5DADE2;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
+  padding: 1.75rem 1.25rem;
+  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  top: 0;
 }
 
-.tarjeta:hover {
-  margin: 5px;
-  transform: scale(1.05);
-  outline: 2px solid #3498DB;
-  outline-offset: 5px;
+.tarjeta-all:hover {
+  top: -6px;
+  border-color: var(--brand-primary);
+  box-shadow: var(--shadow-lg);
 }
 
 .textTitleCard {
-  position: absolute;
-  font-size: 15px;
+  font-size: 0.9375rem;
+  font-weight: 600;
   text-align: center;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .MwMagnitude {
-  margin-top: 60px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--status-danger);
+  margin: 0.5rem 0;
+  letter-spacing: -0.05em;
 }
 
 .IconCard {
-  position: absolute;
-  width: 59px;
-  height: 52px;
-  top: 152px;
-  left: 127px;
-  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
-  transform: translate(-50%, -50%);
+  width: 4rem;
+  height: auto;
+  opacity: 0.85;
+  margin: 0.75rem 0;
+  transition: opacity 0.3s ease;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
+}
+
+.tarjeta-all:hover .IconCard {
+  opacity: 1;
 }
 
 .CityCard {
-  position: absolute;
-  top: 12rem;
-  font-size: 14px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
 }
 
 .CardButton {
-  background-color: #3498DB;
-  border: none;
-  padding: 10px;
-  font-size: 1rem;
-  width: 8em;
-  border-radius: 1rem;
-  color: white;
-  box-shadow: 0 0.4rem #dfd9d9;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-strong);
+  padding: 0.625rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  color: var(--brand-primary);
   cursor: pointer;
-  transition: 0.3s;
-  text-align: center;
-}
-
-.CardButton:active {
-  color: white;
-  box-shadow: 0 0.2rem #dfd9d9;
-  transform: translateY(0.2rem);
+  transition: all 0.2s ease;
+  width: 100%;
 }
 
 .CardButton:hover:not(:disabled) {
-  background: #85c1e9;
-  color: white;
-  text-shadow: 0 0.1rem #bcb4b4;
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  color: #FFFFFF;
 }
 
 .CardButton:disabled {
-  cursor: auto;
-  color: grey;
-}
-
-.ContainerLoad {
-  position: absolute;
-  top: 15rem;
-  left: 36rem;
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  border-color: var(--border-subtle);
+  cursor: not-allowed;
 }
 
 .pagination {
   display: flex;
-  position: relative;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  top: 1rem;
-  right: 0px;
+  gap: 0.5rem;
+  margin: 3rem 0;
+  width: 100%;
 }
 
 .Btnpagination {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  margin: 0 5px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.Btnpagination:hover:not(:disabled) {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+  background: var(--bg-primary);
 }
 
 .Btnpagination:disabled {
-  background-color: #ccc;
+  color: var(--text-muted);
+  border-color: var(--border-subtle);
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
-@media screen and (min-width: 1440px){
-.containerCard{
-margin-left: 17rem;
-   width: 65%;
-  
+.PageIndicator {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0 1rem;
 }
-.pagination{  
-  top: 1rem;
-  right: 1rem;
-}
+
+@media screen and (max-width: 768px) {
+  .tarjeta-all {
+    width: 100%;
+    max-width: 320px;
+  }
 }

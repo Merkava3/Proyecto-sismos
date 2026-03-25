@@ -7,70 +7,61 @@ import MapEarth from '../MapEarth/MapEarth';
 import {
   fetchEarthquakes, setCountry, setType, setMagnitude, setRadius, setUnits, setKm, setMiles,
   toggleMagnitudeSelect, toggleButtonActive, toggleShowUnits,
-  incrementCounter, decrementCounter, updateGeoData
+  incrementCounter, decrementCounter
 } from '../../store/slices/worldMapSlice';
-import GeoData from '../../data/Requeriments';
 import { handleOnchangeNum } from '../../utils/validation';
 import './style/WorldMapWithControls.css';
 import 'animate.css';
 
+/**
+ * WorldMapWithControls component to display a global earthquake map with interactive filters.
+ * Optimized to perform controlled re-renders and fly-to only when "Calculate" is clicked.
+ */
 const WorldMapWithControls = () => {
   const dispatch = useDispatch();
   const {
     showError, place, loading, isMagnitudeSelectOpen, buttonActive,
-    Counter, Radius, Km, Miles, ShowUnits, opcionesPaises, Type
+    Counter, Radius, Km, Miles, ShowUnits, opcionesPaises, Type, country, activeGeoData, Magnitude
   } = useSelector((state) => state.worldMap);
 
+  // Initial load only if we don't have data
   useEffect(() => {
-    let timeoutId;
-    if (!showError) {
-      timeoutId = setTimeout(() => {
-        window.location.reload();
-      }, 5 * 60 * 1000);
-    } else {
-      dispatch(fetchEarthquakes(Type));
+    if (showError && (!place || place.length === 0)) {
+        dispatch(fetchEarthquakes(Type));
     }
-    return () => clearTimeout(timeoutId);
-  }, [showError, Type, dispatch]);
+  }, [dispatch, showError, Type, place]);
 
-  const HandleButton = (e) => {
+  const handleCalculate = (e) => {
     e.preventDefault();
-    dispatch(updateGeoData());
     dispatch(fetchEarthquakes(Type));
   };
 
-  const HandleCheckBox = (e) => {
-    if (e.target.checked) {
-      dispatch(setType("RecentEarthquakes"));
-    } else {
-      dispatch(setType("Earthquakes"));
-    }
+  const handleRecentCheckbox = (e) => {
+    dispatch(setType(e.target.checked ? "RecentEarthquakes" : "Earthquakes"));
   };
 
-  const HandleKM = () => {
+  const setKmUnits = () => {
     dispatch(setKm(true));
-    dispatch(setMiles(false));
     dispatch(setUnits("kilometers"));
   };
 
-  const HandleMiles = () => {
-    dispatch(setKm(false));
+  const setMilesUnits = () => {
     dispatch(setMiles(true));
     dispatch(setUnits("miles"));
   };
 
-  const MagnitudScale = Array.from({ length: 9 }, (_, index) => (
-    <option key={index + 1} value={index + 1}>{index + 1}</option>
+  const magnitudeOptions = Array.from({ length: 9 }, (_, index) => (
+    <option key={index + 1} value={index + 1}>{index + 1}+ Mw</option>
   ));
 
-  const countryOptions = opcionesPaises.map((pais) => (
+  const countryItems = opcionesPaises.map((pais) => (
     <option key={pais["País"]} value={pais["País"]}>
       {pais["País"]}
     </option>
   ));
 
   return (
-    <div>
+    <div className="WorldMapPage">
       {!showError ? (
         <Error429 />
       ) : (
@@ -78,15 +69,27 @@ const WorldMapWithControls = () => {
           <div className='WrapperCoords'>
             <div className='WrapperSelect'>
               <label htmlFor="paisesSelect" className='LabelCoords'>Elige un país:</label>
-              <select className='SelectCoords' name="paises" id="paisesSelect" onChange={(e) => dispatch(setCountry(e.target.value))}>
-                {countryOptions}
+              <select 
+                className='SelectCoords' 
+                name="paises" 
+                id="paisesSelect" 
+                value={country} 
+                onChange={(e) => dispatch(setCountry(e.target.value))}
+              >
+                {countryItems}
               </select>
-              <button className='ButtonCalculer' onClick={HandleButton}>
+              <button 
+                className='ButtonCalculer' 
+                onClick={handleCalculate} 
+                aria-label="Calcular" 
+                title="Calcular"
+                disabled={loading}
+              >
                 <FontAwesomeIcon icon={faLocationArrow} size="2x" color="white" />
               </button>
               <div className="Recients">
-                <label htmlFor="vehicle1">Recientes : </label>
-                <input type="checkbox" name="Recient" value="Reciente" onClick={HandleCheckBox} />
+                <label htmlFor="recentCheck">Recientes:</label>
+                <input id="recentCheck" type="checkbox" name="Recient" value="Reciente" onClick={handleRecentCheckbox} />
               </div>
             </div>
 
@@ -94,25 +97,31 @@ const WorldMapWithControls = () => {
               <div className="OptionMagnitud">
                 <button className='ButtonOptions' onClick={() => dispatch(toggleMagnitudeSelect())}>
                   <FontAwesomeIcon icon={faHouseCrack} className="ButtonOptionsIcon" />
-                  <p className='ButtonOptionsTitle'> Magitud </p>
+                  <p className='ButtonOptionsTitle'> {Magnitude}+ Mw </p>
                 </button>
                 {isMagnitudeSelectOpen && (
-                  <select className="SelectMagnitude animate__animated animate__bounceIn" name="magnitude" id="magnitude" onChange={(e) => dispatch(setMagnitude(e.target.value))}>
-                    {MagnitudScale}
+                  <select 
+                    className="SelectMagnitude animate__animated animate__bounceIn" 
+                    name="magnitude" 
+                    id="magnitude" 
+                    value={Magnitude}
+                    onChange={(e) => dispatch(setMagnitude(e.target.value))}
+                  >
+                    {magnitudeOptions}
                   </select>
                 )}
               </div>
               <div className="OptionCount">
                 <button className='ButtonOptions' onClick={() => dispatch(toggleButtonActive())}>
                   <FontAwesomeIcon icon={faLocationDot} className="ButtonOptionsIcon" />
-                  <p className='ButtonOptionsTitle'> Numero Sismos </p>
+                  <p className='ButtonOptionsTitle'> <span>{Counter}</span> Sismos </p>
                 </button>
                 {buttonActive && (
                   <div className="SelectCount animate__animated animate__bounceIn">
                     <div className='ContainerCount'>
-                      <button className='CountIncrementar' onClick={(e) => { e.preventDefault(); dispatch(incrementCounter()); }}>+</button>
-                      <span>{Counter}</span>
                       <button className='CountDercrementar' onClick={(e) => { e.preventDefault(); dispatch(decrementCounter()); }}>-</button>
+                      <span>{Counter}</span>
+                      <button className='CountIncrementar' onClick={(e) => { e.preventDefault(); dispatch(incrementCounter()); }}>+</button>
                     </div>
                   </div>
                 )}
@@ -120,7 +129,7 @@ const WorldMapWithControls = () => {
               <div className="OptionUnits">
                 <button className="ButtonOptions" onClick={() => dispatch(toggleShowUnits())}>
                   <FontAwesomeIcon icon={faGlobe} className="ButtonOptionsIcon" />
-                  <p className='ButtonOptionsTitle'> Radio </p>
+                  <p className='ButtonOptionsTitle'> {Radius} {Km ? "Km" : "Mi"} </p>
                 </button>
                 {ShowUnits && (
                   <div className="ContainerUnits animate__animated animate__bounceIn">
@@ -130,21 +139,27 @@ const WorldMapWithControls = () => {
                       className="inputUnits"
                       onChange={(e) => dispatch(setRadius(e.target.value))}
                       onKeyPress={(e) => handleOnchangeNum(e, Radius)}
-                      placeholder="Ingrese el radio" />
+                      placeholder="Radio" />
                     <div className='OpUntisChecbox'>
                       <div className="InputUnitsKm">
-                        <label htmlFor="KM"> Km: </label>
-                        <input type="checkbox" checked={Km} name="Km" value="Km" onChange={HandleKM} />
+                        <label htmlFor="KM"> Km </label>
+                        <input id="KM" type="checkbox" checked={Km} name="Km" value="Km" onChange={setKmUnits} />
                       </div>
-                      <label htmlFor="Miles"> Miles: </label>
-                      <input type="checkbox" checked={Miles} name="Miles" value="Miles" onChange={HandleMiles} />
+                      <div className="InputUnitsMiles">
+                        <label htmlFor="Miles"> Mi </label>
+                        <input id="Miles" type="checkbox" checked={Miles} name="Miles" value="Miles" onChange={setMilesUnits} />
+                      </div>
                     </div>
                   </div>
                 )}
               </div>
             </div>
           </div>
-          <MapEarth geodata={GeoData} place={place} loading={loading} />
+          
+          <main className="MapViewport">
+            {/* Decoupled Map center: only flyTo when activeGeoData changes from Redux fulfilled */}
+            <MapEarth geodata={activeGeoData} place={place} loading={loading} />
+          </main>
         </>
       )}
     </div>

@@ -1,13 +1,32 @@
-.ContainerMap{
+.ContainerMap {
+  width: 100%;
+  height: 100%;
   position: relative;
-  left: 4%;
-  width: 355px;
-  height: 300px;
-  border: 2px solid  #5DADE2;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 6px;
+  z-index: 1; /* Below the close button */
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
 }
 
-.InfoPopup{
-  font-size: 10px;
+/* Customize Leaflet Popup */
+.leaflet-popup-content-wrapper {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  font-family: 'Outfit', sans-serif;
+}
+
+.InfoPopup {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  padding: 0.25rem 0;
+}
+
+.InfoPopup p {
+  margin: 0.25rem 0;
+}
+
+.InfoPopup strong {
+  color: var(--text-primary);
+  font-weight: 600;
 }

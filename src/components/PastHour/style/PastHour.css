@@ -1,16 +1,64 @@
 .gallery {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   width: 100%;
   display: flex;
   justify-content: center;
+  min-height: 200px;
+}
+
+.LoaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 4rem 0;
+}
+
+.ErrorContainer {
+  text-align: center;
+  color: var(--status-danger);
+  padding: 3rem 1.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  max-width: 400px;
+  margin: 2rem auto;
+  box-shadow: var(--shadow-sm);
+  font-family: 'Outfit', sans-serif;
+}
+
+.RetryButton {
+  margin-top: 1rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-secondary);
+  color: var(--brand-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Outfit', sans-serif;
+}
+
+.RetryButton:hover {
+  background: var(--brand-primary);
+  color: #FFFFFF;
+  border-color: var(--brand-primary);
 }
 
 .TitleHour {
   text-align: center;
-  font-size: 36px;
-  margin-top: 7rem;
-  color: #0F172A;
-  /* Slate 900 */
-  font-weight: 600;
-  letter-spacing: -0.5px;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 8rem;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  padding: 0 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .TitleHour {
+    font-size: 1.75rem;
+    margin-top: 6rem;
+  }
 }

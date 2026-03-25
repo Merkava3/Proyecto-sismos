@@ -1,15 +1,35 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import GeoApi from '../../services/GeoApi/GeoApi';
-import GeoData from '../../data/Requeriments';
 import Countries, { Coords } from '../../data/countries';
 
+/**
+ * Thunk to fetch earthquakes.
+ * Generates requirements dynamically from the state to avoid mutating global objects.
+ */
 export const fetchEarthquakes = createAsyncThunk(
     'worldMap/fetchEarthquakes',
     async (type, { getState, rejectWithValue }) => {
         try {
-            const geoApi = new GeoApi(GeoData, type);
+            const state = getState().worldMap;
+            const [lat, lon] = Coords(state.country) || [4.5709, -74.2973];
+            
+            // Build the requirements object dynamically
+            const requirements = {
+                latitude: lat,
+                longitude: lon,
+                count: state.Counter,
+                magnitude: state.Magnitude,
+                radius: (state.Radius === "" || Number(state.Radius) <= 0) ? 500 : state.Radius,
+                units: state.Units
+            };
+
+            const geoApi = new GeoApi(requirements, type);
             const result = await geoApi.getDataWithCaching();
-            return result; // result contiene { show, result }
+            
+            return { 
+                ...result, 
+                newGeoData: { latitude: parseFloat(lat), longitude: parseFloat(lon) } 
+            };
         } catch (error) {
             return rejectWithValue(error.message);
         }
@@ -17,21 +37,23 @@ export const fetchEarthquakes = createAsyncThunk(
 );
 
 const initialState = {
-    country: Countries[0]["País"],
+    country: "Colombia",
     showError: true,
-    place: {},
+    place: [],
     loading: false,
     isMagnitudeSelectOpen: false,
     buttonActive: false,
-    Magnitude: 3,
-    Counter: 5,
+    Magnitude: 4,
+    Counter: 50,
     Type: "Earthquakes",
     ShowUnits: false,
-    Radius: "",
-    Km: false,
+    Radius: "500",
+    Km: true,
     Miles: false,
     Units: "kilometers",
     opcionesPaises: Countries,
+    // activeGeoData stores the coordinates currently rendered on the map
+    activeGeoData: { latitude: 4.5709, longitude: -74.2973 }, // Colombia por defecto
 };
 
 export const worldMapSlice = createSlice({
@@ -44,23 +66,14 @@ export const worldMapSlice = createSlice({
         setCounter: (state, action) => { state.Counter = action.payload; },
         setRadius: (state, action) => { state.Radius = action.payload; },
         setUnits: (state, action) => { state.Units = action.payload; },
-        setKm: (state, action) => { state.Km = action.payload; },
-        setMiles: (state, action) => { state.Miles = action.payload; },
+        setKm: (state, action) => { state.Km = action.payload; if (action.payload) state.Miles = false; },
+        setMiles: (state, action) => { state.Miles = action.payload; if (action.payload) state.Km = false; },
         toggleMagnitudeSelect: (state) => { state.isMagnitudeSelectOpen = !state.isMagnitudeSelectOpen; },
         toggleButtonActive: (state) => { state.buttonActive = !state.buttonActive; },
         toggleShowUnits: (state) => { state.ShowUnits = !state.ShowUnits; },
         incrementCounter: (state) => { if (state.Counter < 100) state.Counter += 1; },
-        decrementCounter: (state) => { if (state.Counter > 0) state.Counter -= 1; },
-        updateGeoData: (state) => {
-            // Setea los requerimientos fijos de la API antes de despachar
-            const [lat, lon] = Coords(state.country);
-            GeoData.latitude = lat;
-            GeoData.longitude = lon;
-            GeoData.count = state.Counter;
-            GeoData.magnitude = state.Magnitude;
-            GeoData.radius = state.Radius === "" || state.Radius === 0 ? 500 : state.Radius;
-            GeoData.units = state.Units;
-        }
+        decrementCounter: (state) => { if (state.Counter > 1) state.Counter -= 1; },
+        updateGeoData: (state) => { return state; }
     },
     extraReducers: (builder) => {
         builder
@@ -69,12 +82,17 @@ export const worldMapSlice = createSlice({
             })
             .addCase(fetchEarthquakes.fulfilled, (state, action) => {
                 state.loading = false;
-                state.place = action.payload.result || {};
+                state.place = action.payload.result || [];
                 state.showError = action.payload.show !== undefined ? action.payload.show : true;
+                // Only update map center when data is successfully fetched
+                if (action.payload.newGeoData) {
+                    state.activeGeoData = action.payload.newGeoData;
+                }
             })
-            .addCase(fetchEarthquakes.rejected, (state) => {
+            .addCase(fetchEarthquakes.rejected, (state, { payload }) => {
                 state.loading = false;
-                state.showError = false; // Manejamos el Error 429
+                state.showError = false;
+                console.error("Fetch failed:", payload);
             });
     }
 });

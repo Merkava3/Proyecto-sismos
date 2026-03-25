@@ -12,11 +12,11 @@ import Load from './components/Load/Load'
 
 
 
-const MylazyComponent  = lazy(() => import('./routers/AppRoueter/AppRouter'))
+const MylazyComponent  = lazy(() => import('./routers/AppRouter/AppRouter'))
 
 const App = () => {  
  return(
-<Suspense fallback={<div>Loading...</div>}>
+<Suspense fallback={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100vw', height: '100vh' }}><Load /></div>}>
   <MylazyComponent/>
 </Suspense>
  )

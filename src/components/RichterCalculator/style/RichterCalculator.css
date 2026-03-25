@@ -1,22 +1,22 @@
 .Title {
   font-family: 'Outfit', sans-serif;
   text-align: center;
-  font-size: 36px;
-  font-weight: 600;
-  color: #0F172A;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
   margin-top: 8rem;
   margin-bottom: 2rem;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.025em;
 }
 
 .Box {
   max-width: 450px;
   margin: 0 auto;
-  padding: 35px;
-  border-radius: 12px;
-  background-color: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-md);
 }
 
 .FormContainer {
@@ -26,38 +26,38 @@
 
 .LabelName {
   font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #475569;
-  /* Slate 600 */
-  margin-bottom: 8px;
-  margin-top: 15px;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
+  margin-top: 1.25rem;
 }
 
 .InputText {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 0.9375rem;
   width: 100%;
-  padding: 12px 16px;
-  border: 1px solid #CBD5E1;
-  /* Slate 300 */
-  border-radius: 8px;
-  color: #0F172A;
-  background-color: #F8FAFC;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  background-color: var(--bg-tertiary);
   outline: none;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .InputText:hover {
-  border-color: #94A3B8;
-  /* Slate 400 */
+  border-color: var(--text-muted);
 }
 
 .InputText:focus {
-  border-color: #0284C7;
-  /* Sky 600 */
-  background-color: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+  border-color: var(--brand-primary);
+  background-color: var(--bg-secondary);
+  box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+}
+
+.InputText::placeholder {
+  color: var(--text-muted);
 }

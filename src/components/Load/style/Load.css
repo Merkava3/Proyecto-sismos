@@ -1,50 +1,51 @@
 .LoadingContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  /* Espacio entre el pin y los puntos */
+  gap: 1.5rem;
+  pointer-events: none;
 }
 
+/* modern 3D-ish pin loader */
 .loader {
-  width: 44.8px;
-  height: 44.8px;
-  transform: rotate(45deg);
+  width: 42px;
+  height: 42px;
   position: relative;
+  transform: rotate(-45deg); /* Adjusted to keep pin upright */
+  background: var(--brand-primary);
+  border-radius: 50% 50% 50% 0;
+  box-shadow: -8px 8px 0px rgba(2, 132, 199, 0.15); /* Layered shadow style */
+  animation: bouncePin 1.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
-.loader:before,
-.loader:after {
+.loader::after {
   content: "";
+  width: 16px;
+  height: 16px;
+  background: #FFFFFF;
   position: absolute;
-  inset: 0;
-  border-radius: 50% 50% 0 50%;
-  background: #0000;
-  background-image: radial-gradient(circle 11.2px at 50% 50%, #0000 94%, #0284C7);
-  /* Sky 600 */
-}
-
-.loader:after {
-  animation: pulse-ytk0dhmd 1s infinite;
-  transform: perspective(336px) translateZ(0px);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .lds-ellipsis {
-  display: inline-block;
+  display: flex;
   position: relative;
-  width: 72px;
-  height: 50px;
+  width: 60px;
+  height: 12px;
+  justify-content: center;
 }
 
 .lds-ellipsis div {
   position: absolute;
-  top: 18px;
-  /* Centrado verticalmente respecto a sus propios 50px de altura */
-  width: 13px;
-  height: 13px;
+  top: 0;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #0284C7;
-  /* Sky 600 */
+  background: var(--brand-primary);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
@@ -59,48 +60,31 @@
 }
 
 .lds-ellipsis div:nth-child(3) {
-  left: 32px;
+  left: 28px;
   animation: lds-ellipsis2 0.6s infinite;
 }
 
 .lds-ellipsis div:nth-child(4) {
-  left: 56px;
+  left: 48px;
   animation: lds-ellipsis3 0.6s infinite;
 }
 
 @keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-
-  100% {
-    transform: scale(1);
-  }
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
 }
 
 @keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(0);
-  }
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
 }
 
 @keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  100% {
-    transform: translate(24px, 0);
-  }
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, 0); }
 }
 
-@keyframes pulse-ytk0dhmd {
-  to {
-    transform: perspective(336px) translateZ(168px);
-    opacity: 0;
-  }
+@keyframes bouncePin {
+  0%, 100% { transform: rotate(-45deg) translateY(0); }
+  50% { transform: rotate(-45deg) translateY(-8px); }
 }

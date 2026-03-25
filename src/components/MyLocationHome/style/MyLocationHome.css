@@ -1,73 +1,112 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-.card {
-  position: relative;
-  top: 30px;
-  width: 244px;
-  height: 260px; 
-  border-radius: 14px;
-  z-index: 1111;
-  left: 36rem;
-  overflow: hidden;
+/* MyLocationHome — Glassmorphism nearquake card */
+
+.MyLocationWrapper {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1.5rem;
+}
+
+/* ── Card ───────────────────────────────────────────── */
+.MyLocationCard {
+  position: relative;
+  width: 280px;
+  min-height: 220px;
+  border-radius: var(--radius-xl, 1.25rem);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;  
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.bg {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  width: 210px;
-  height: 240px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 15px;
-  padding: 10px 12px 0px 12px;
-  z-index: 2;
-  background: rgba(255, 255, 255, .95);
-  backdrop-filter: blur(24px);
-  border-radius: 10px;
-  overflow: hidden;
-  outline: 2px solid white;
+.MyLocationCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(2, 132, 199, 0.18);
 }
 
-.blob {
+/* ── Animated blob ──────────────────────────────────── */
+.MyLocationBlob {
   position: absolute;
   z-index: 1;
-  top: 50%;
-  left: 50%;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background-color:  #3498DB;
-  opacity: 1;
-  filter: blur(12px);
-  animation: blob-bounce 5s infinite ease;
-}
-.Containerinfo{
-  position: absolute;
-  top: 31px;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, var(--brand-primary, #0284C7) 0%, transparent 70%);
+  opacity: 0.15;
+  animation: blobPulse 6s ease-in-out infinite;
+  pointer-events: none;
 }
 
-@keyframes blob-bounce {
-  0% {
-    transform: translate(-100%, -100%) translate3d(0, 0, 0);
-  }
+@keyframes blobPulse {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  33%       { transform: scale(1.2) translate(8%, -8%); }
+  66%       { transform: scale(0.9) translate(-6%, 10%); }
+}
 
-  25% {
-    transform: translate(-100%, -100%) translate3d(100%, 0, 0);
-  }
+/* ── Content ────────────────────────────────────────── */
+.MyLocationContent {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  font-family: 'Outfit', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 
-  50% {
-    transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
-  }
+.MyLocationBadge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-primary);
+  background: rgba(2, 132, 199, 0.1);
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  width: fit-content;
+}
 
-  75% {
-    transform: translate(-100%, -100%) translate3d(0, 100%, 0);
-  }
+.MyLocationTitle {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin: 0;
+}
 
-  100% {
-    transform: translate(-100%, -100%) translate3d(0, 0, 0);
-  }
+.MyLocationDate {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.MyLocationLink {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--brand-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.MyLocationLink:hover {
+  color: var(--brand-hover, #0369a1);
+  text-decoration: underline;
+}
+
+/* ── Utility states ─────────────────────────────────── */
+.MyLocationLoader,
+.MyLocationDenied,
+.MyLocationEmpty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9375rem;
+  color: var(--text-tertiary);
+  text-align: center;
 }
