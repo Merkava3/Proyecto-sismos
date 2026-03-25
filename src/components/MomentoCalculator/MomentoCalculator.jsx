@@ -136,11 +136,11 @@ const MomentoCalculator = () => {
               </div>
 
               <a
-                href="https://es.wikipedia.org/wiki/Escala_de_magnitud_de_momento"
+                href="/imagenes/example.png"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Más sobre la escala Mw →
+                Ver explicación de la fórmula Mw →
               </a>
             </div>
           )}

@@ -35,9 +35,8 @@ const [isModalVisible, setIsModalVisible] = useState(false);
                   <span role="img" aria-label="Emoji"></span>
                 </div>
               </div>
-              <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Ondas_s%C3%ADsmicas_s_p.svg/800px-Ondas_s%C3%ADsmicas_s_p.svg.png" target="_blank">
-                <img src="URL_DE_LA_IMAGEN" alt="Explicacion de escala sismologica" />
-                Explicacion de escala sismologica
+              <a href="/imagenes/ritcher.png" target="_blank" rel="noopener noreferrer">
+                Ver explicación de escala sismológica →
               </a>
             </div>
           )}
