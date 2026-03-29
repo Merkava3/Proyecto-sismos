@@ -58,7 +58,8 @@ export const sortObj = formatEarthquakeData;
  * Handles endpoint mapping and parameter cleaning.
  */
 export const generateLocalUrl = (requirements, name) => {
-  const baseUrl = "http://localhost:8000/api";
+  // const baseUrl = "http://localhost:8000/api";
+  const baseUrl = "https://api-earthquake.onrender.com/api";
   let endpoint = "/earthquakes/";
   const params = new URLSearchParams();
 

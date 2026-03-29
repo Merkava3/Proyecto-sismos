@@ -58,7 +58,7 @@ describe('Helpers Service', () => {
       expect(result.apiUrl).toContain("longitude=-74.2");
       expect(result.apiUrl).toContain("radius=500");
       expect(result.apiUrl).not.toContain("maliciousKey");
-      expect(result.apiUrl).toContain("http://localhost:8000/api/earthquakes/");
+      expect(result.apiUrl).toContain("https://api-earthquake.onrender.com/api/earthquakes/");
     });
 
     it('debería retornar nulo ante un nombre desconocido', () => {
