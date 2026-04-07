@@ -39,7 +39,9 @@ export function formatEarthquakeData(data) {
     City: item.city || "Cerca de la ciudad",
     Subnational: item.subnational || "Zona cercana",
     Date: formatDate(item.date),
-    Magnitude: item.magnitude || "N/A",
+    Magnitude: (item.magnitude !== undefined && item.magnitude !== null) 
+      ? (Math.round(parseFloat(item.magnitude) * 100) / 100).toString() 
+      : "N/A",
     url: item.url || "#",
     locations: [
       parseFloat(item.latitude || 0),
